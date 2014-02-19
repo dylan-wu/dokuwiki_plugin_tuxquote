@@ -50,10 +50,10 @@ class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
     function getInfo() {
         return array('author' => 'Doug Burner',
                      'email'  => 'doug869@users.noreply.github.com',
-                     'date'   => '2013-06-28',
+                     'date'   => '2014-02-19',
                      'name'   => 'Randompics Plugin',
                      'desc'   => 'Show a random image and quote',
-                     'url'    => 'doug869@users.noreply.github.com');
+                     'url'    => 'https://github.com/foug869/dokuwiki_plugin_randompics');
     }
  
     function getType() { return 'substition'; }
