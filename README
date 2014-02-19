@@ -6,6 +6,11 @@ Doug Burner
     $ sudo tar xf randompics.tgz
 - Change ownership to apache:apache
     $ sudo chown -R apache:apache randompics
+
+-OR-
+
+- From the plugin manager (Admin - Manage Plugins), enter "https://github.com/doug869/dokuwiki_plugin_randompics/archive/master.zip" in the plugin URL and dowload.
+
 - Point a browser to the Administration - Configuration Settings panel and set 'cachetime' to 60
 - Edit a wiki page and add the '[RANDOMPICS]' token.
 
