@@ -4,4 +4,4 @@ email doug869@users.noreply.github.com
 date 2014-02-19
 name Randompics Plugin
 desc Show a random image and quote
-url https://github.com/foug869/dokuwiki_plugin_randompics
+url https://github.com/doug869/dokuwiki_plugin_randompics

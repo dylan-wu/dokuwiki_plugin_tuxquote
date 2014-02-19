@@ -53,7 +53,7 @@ class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
                      'date'   => '2014-02-19',
                      'name'   => 'Randompics Plugin',
                      'desc'   => 'Show a random image and quote',
-                     'url'    => 'https://github.com/foug869/dokuwiki_plugin_randompics');
+                     'url'    => 'https://github.com/doug869/dokuwiki_plugin_randompics');
     }
  
     function getType() { return 'substition'; }
