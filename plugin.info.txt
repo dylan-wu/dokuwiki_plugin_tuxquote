@@ -1,0 +1,7 @@
+base randompics
+author Doug Burner, Phil Chadwick
+email doug869@users.noreply.github.com
+date 2013-06-28
+name Randompics Plugin
+desc Show a random image and quote
+url http://unix-wiki
