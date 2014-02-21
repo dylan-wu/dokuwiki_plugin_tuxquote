@@ -1,7 +1,7 @@
-base randompics
-author Doug Burner, Phil Chadwick
-email doug869@users.noreply.github.com
-date 2014-02-19
-name Randompics Plugin
+base tuxquote
+author Craig Douglas, Phil Chadwick
+email eldougo@users.noreply.github.com
+date 2014-02-21
+name Tuxquote Plugin
 desc Show a random image and quote
-url https://github.com/doug869/dokuwiki_plugin_randompics
+url https://github.com/eldougo/dokuwiki_plugin_tuxquote
