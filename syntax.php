@@ -16,7 +16,7 @@ require_once DOKU_PLUGIN.'syntax.php';
  * All DokuWiki plugins to extend the parser/rendering mechanism
  * need to inherit from this class
  */
-class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
+class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
  
     function getInfo() {
         return array('author' => 'Craig Douglas',
@@ -31,7 +31,7 @@ class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
     function getSort() { return 32; }
  
     function connectTo($mode) {
-        $this->Lexer->addSpecialPattern('\[RANDOMPICS\]',$mode,'plugin_randompics');
+        $this->Lexer->addSpecialPattern('\[TUXQUOTE\]',$mode,'plugin_tuxquote');
     }
  
     function handle($match, $state, $pos, &$handler) {
@@ -67,8 +67,7 @@ class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
      * Chose and format a random image.
      */
     function chooseimage() {
-        $IMAGEBASEURL = dirname($_SERVER['PHP_SELF'])."/lib/plugins/randompics/pics/";
-        $IMAGEBASEURL = str_replace("//", "/", $IMAGEBASEURL);
+        $IMAGEBASEURL = dirname($_SERVER['PHP_SELF'])."/lib/plugins/{$this->getPluginName()}/pics/";
         $IMAGEDIR = DOKU_PLUGIN.$this->getPluginName()."/pics/";
         $images = array_filter(scandir($IMAGEDIR), array($this, 'isapic'));
         return $IMAGEBASEURL.$images[array_rand($images,1)];
@@ -80,7 +79,7 @@ class syntax_plugin_randompics extends DokuWiki_Syntax_Plugin {
     function image_and_quote(){
         return  "<div style=\"float: right; width:256px; \"><img src=\""
                 .$this->chooseimage()."\" ></a><br><p align=\"middle\">"
-                .$this->choosequote()."</p> </div>";
+                .$this->choosequote()."</p></div>\n";
     }
 }
 

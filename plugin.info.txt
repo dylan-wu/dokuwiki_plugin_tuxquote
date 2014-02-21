@@ -1,5 +1,5 @@
 base tuxquote
-author Craig Douglas, Phil Chadwick
+author Craig Douglas
 email eldougo@users.noreply.github.com
 date 2014-02-21
 name Tuxquote Plugin
