@@ -19,10 +19,10 @@ OR to install the hard way:
     $ sudo mv dokuwiki_plugin_tuxquote-master tuxquote
     $ sudo rm master.zip
 - Change ownership to the web user
-    $ sudo chown -R apache:apache randompics
+    $ sudo chown -R apache:apache tuxquote
 
 After installation:
 
 - Point a browser to the Administration - Configuration Settings panel and set 'cachetime' to 1
-- Edit a wiki page and add the '[RANDOMPICS]' token.
+- Edit a wiki page and add the '[TUXQUOTE]' token.
 
