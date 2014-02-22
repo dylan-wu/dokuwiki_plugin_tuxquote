@@ -20,7 +20,7 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
  
     function getInfo() {
         return array('author' => 'Craig Douglas',
-                     'email'  => 'eldougo@users.noreply.github.com',
+                     'email'  => 'eldougo@missionrisk.com',
                      'date'   => '2014-02-21',
                      'name'   => 'Tuxquote Plugin',
                      'desc'   => 'Show a random image and quote',
