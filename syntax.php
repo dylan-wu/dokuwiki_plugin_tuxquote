@@ -21,7 +21,7 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
     function getInfo() {
         return array('author' => 'Craig Douglas',
                      'email'  => 'eldougo@missionrisk.com',
-                     'date'   => '2014-02-21',
+                     'date'   => '2014-03-04',
                      'name'   => 'Tuxquote Plugin',
                      'desc'   => 'Show a random image and quote',
                      'url'    => 'https://github.com/eldougo/dokuwiki_plugin_tuxquote');
@@ -40,7 +40,7 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
  
     function render($mode, &$renderer, $data) {
         if($mode == 'xhtml'){
-            $renderer->doc .= $this->image_and_quote();
+            $renderer->doc .= $this->tuxquote_main();
             return true;
         }
         return false;
@@ -49,37 +49,38 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
     /**
      * Callback used to determine if the passed file is an image.
      */
-    function isapic($item){
-        return strpos($item, ".jpg") 
-        || strpos($item, ".png") 
-        || strpos($item, ".gif");
+    function tuxquote_is_image( $file_name ){
+        return strpos( $file_name, ".jpg" ) 
+        ||     strpos( $file_name, ".png" ) 
+        ||     strpos( $file_name, ".gif" );
     }
 
    /**
     * Return a random quote.
     */
-    public function choosequote(){
-        $quotes = file(DOKU_PLUGIN.$this->getPluginName()."/quotes.txt");
-        return $quotes[array_rand($quotes,1)];
+    public function tuxquote_choose_quote(){
+        $quotes = file( DOKU_PLUGIN.$this->getPluginName()."/quotes.txt" );
+        return $quotes[ array_rand( $quotes,1 ) ];
     }
 
     /**
      * Chose and format a random image.
      */
-    function chooseimage() {
-        $IMAGEBASEURL = dirname($_SERVER['PHP_SELF'])."/lib/plugins/{$this->getPluginName()}/pics/";
-        $IMAGEDIR = DOKU_PLUGIN.$this->getPluginName()."/pics/";
-        $images = array_filter(scandir($IMAGEDIR), array($this, 'isapic'));
-        return $IMAGEBASEURL.$images[array_rand($images,1)];
+    function tuxquote_choose_image() {
+        $image_url   = dirname( $_SERVER['PHP_SELF'] )."/lib/plugins/{$this->getPluginName()}/images/";
+        $image_dir   = DOKU_PLUGIN.$this->getPluginName()."/images/";
+        $image_array = array_filter( scandir( $image_dir ), array( $this, 'tuxquote_is_image' ) );
+        return $image_url.$image_array[ array_rand( $image_array,1 ) ];
     }
 
     /*
      * Return HTML encoded random image and quote.
      */
-    function image_and_quote(){
-        return  "<div style=\"float: right; width:256px; \"><img src=\""
-                .$this->chooseimage()."\" ></a><br><p align=\"middle\">"
-                .$this->choosequote()."</p></div>\n";
+    function tuxquote_main() {
+        return  "\n<div style='float: right; width:256px; '>\n"
+                ."  <img src='".$this->tuxquote_choose_image()."'><br />\n"
+                ."  <p align='middle'>".$this->tuxquote_choose_quote()."</p>\n"
+                ."</div>\n";
     }
 }
 
