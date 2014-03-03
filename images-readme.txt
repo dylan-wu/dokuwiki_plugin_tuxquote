@@ -1,4 +1,4 @@
-The supplied images were sourced from ChrystalXP.net (http://www.crystalxp.net/) and are all distributed under the Creative Commons BY-NC-SA license (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+The supplied images were sourced from CrystalXP.net (http://www.crystalxp.net/) and are all distributed under the Creative Commons BY-NC-SA license (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 
 Under the Creative Commons BY-NC-SA license, with the images supplied in this this plugin (Tuxquote), you are free to:
 
