@@ -1,6 +1,6 @@
 The supplied images were sourced from CrystalXP.net (http://www.crystalxp.net/) and are all distributed under the Creative Commons BY-NC-SA license (http://creativecommons.org/licenses/by-nc-sa/3.0/)
 
-Under the Creative Commons BY-NC-SA license, with the images supplied in this this plugin (Tuxquote), you are free to:
+Under the Creative Commons BY-NC-SA (Attribution, Non-Commercial, Share Alike) license, you are free to do the following with the images supplied in this this plugin (Tuxquote):
 
 Share - copy and redistribute the material in any medium or format
 Adapt - remix, transform, and build upon the material
