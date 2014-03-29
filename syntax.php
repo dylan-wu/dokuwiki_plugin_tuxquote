@@ -20,8 +20,8 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
  
     function getInfo() {
         return array('author' => 'Craig Douglas',
-                     'email'  => 'eldougo@missionrisk.com',
-                     'date'   => '2014-03-04',
+                     'email'  => 'contact22@eldougo.net',
+                     'date'   => '2014-03-29',
                      'name'   => 'Tuxquote Plugin',
                      'desc'   => 'Show a random image and quote',
                      'url'    => 'https://github.com/eldougo/dokuwiki_plugin_tuxquote');
@@ -59,18 +59,18 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
     * Return a random quote.
     */
     public function tuxquote_choose_quote(){
-        $quotes = file( DOKU_PLUGIN.$this->getPluginName()."/quotes.txt" );
-        return $quotes[ array_rand( $quotes,1 ) ];
+        $quotes = file( DOKU_PLUGIN . $this->getPluginName() . "/quotes.txt" );
+        return $quotes[ array_rand( $quotes, 1 ) ];
     }
 
     /**
      * Chose and format a random image.
      */
     function tuxquote_choose_image() {
-        $image_url   = dirname( $_SERVER['PHP_SELF'] )."/lib/plugins/{$this->getPluginName()}/images/";
-        $image_dir   = DOKU_PLUGIN.$this->getPluginName()."/images/";
+        $image_url   = getBaseURL() . "lib/plugins/{$this->getPluginName()}/images/";
+        $image_dir   = DOKU_PLUGIN . $this->getPluginName() . "/images/";
         $image_array = array_filter( scandir( $image_dir ), array( $this, 'tuxquote_is_image' ) );
-        return $image_url.$image_array[ array_rand( $image_array,1 ) ];
+        return $image_url . $image_array[ array_rand( $image_array,1 ) ];
     }
 
     /*
@@ -78,8 +78,8 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
      */
     function tuxquote_main() {
         return  "\n<div style='float: right; width:256px; '>\n"
-                ."  <img src='".$this->tuxquote_choose_image()."'><br />\n"
-                ."  <p align='middle'>".$this->tuxquote_choose_quote()."</p>\n"
+                ."  <img src='" . $this->tuxquote_choose_image() . "'><br />\n"
+                ."  <p align='middle'>" . $this->tuxquote_choose_quote() . "</p>\n"
                 ."</div>\n";
     }
 }
