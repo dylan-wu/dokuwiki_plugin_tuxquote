@@ -1,7 +1,7 @@
 base tuxquote
 author Craig Douglas
 email contact22@eldougo.net
-date 2014-03-29
+date 2014-09-15
 name Tuxquote Plugin
 desc Show a random image and quote
 url https://github.com/eldougo/dokuwiki_plugin_tuxquote

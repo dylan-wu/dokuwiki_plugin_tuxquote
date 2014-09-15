@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Tuxquote: Inserts a random image and quote.
- * 
+ *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Craig Douglas
  */
- 
+
 // must be run within DokuWiki
 if(!defined('DOKU_INC')) die();
 
@@ -17,27 +17,27 @@ require_once DOKU_PLUGIN.'syntax.php';
  * need to inherit from this class
  */
 class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
- 
+
     function getInfo() {
         return array('author' => 'Craig Douglas',
                      'email'  => 'contact22@eldougo.net',
-                     'date'   => '2014-03-29',
+                     'date'   => '2014-09-15',
                      'name'   => 'Tuxquote Plugin',
                      'desc'   => 'Show a random image and quote',
                      'url'    => 'https://github.com/eldougo/dokuwiki_plugin_tuxquote');
     }
- 
+
     function getType() { return 'substition'; }
     function getSort() { return 32; }
- 
+
     function connectTo($mode) {
         $this->Lexer->addSpecialPattern('\[TUXQUOTE\]',$mode,'plugin_tuxquote');
     }
- 
+
     function handle($match, $state, $pos, &$handler) {
         return array($match, $state, $pos);
     }
- 
+
     function render($mode, &$renderer, $data) {
         if($mode == 'xhtml'){
             $renderer->doc .= $this->tuxquote_main();
@@ -45,13 +45,13 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
         }
         return false;
     }
-    
+
     /**
      * Callback used to determine if the passed file is an image.
      */
     function tuxquote_is_image( $file_name ){
-        return strpos( $file_name, ".jpg" ) 
-        ||     strpos( $file_name, ".png" ) 
+        return strpos( $file_name, ".jpg" )
+        ||     strpos( $file_name, ".png" )
         ||     strpos( $file_name, ".gif" );
     }
 
@@ -73,13 +73,13 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
         return $image_url . $image_array[ array_rand( $image_array,1 ) ];
     }
 
-    /*
+    /**
      * Return HTML encoded random image and quote.
      */
     function tuxquote_main() {
         return  "\n<div style='float: right; width:256px; '>\n"
                 ."  <img src='" . $this->tuxquote_choose_image() . "'><br />\n"
-                ."  <p align='middle'>" . $this->tuxquote_choose_quote() . "</p>\n"
+                ."  <p style='text-align: center'>" . $this->tuxquote_choose_quote() . "</p>\n"
                 ."</div>\n";
     }
 }
