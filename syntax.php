@@ -9,6 +9,10 @@
 // must be run within DokuWiki
 if(!defined('DOKU_INC')) die();
 
+define('TUXQUOTE_DEFAULT_WIDTH', '256px'); // Default div width for shortcode print.
+define('TUXQUOTE_DEFAULT_ALIGN', 'right'); // Default div alignment.
+
+
 if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once DOKU_PLUGIN.'syntax.php';
 
@@ -106,6 +110,8 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
      * Return HTML encoded random image and quote.
      */
     function tuxquote_main() {
-        return  $this->tuxquote_build_format( $this->getConf('tuxquote_width'), $this->getConf('tuxquote_align'), $this->getConf('tuxquote_title') );
+        return  $this->tuxquote_build_format( $this->getConf( 'tuxquote_width' ),
+                                              $this->getConf( 'tuxquote_align' ),
+                                              $this->getConf( 'tuxquote_title' ) );
     }
 } // class syntax_plugin_tuxquote
