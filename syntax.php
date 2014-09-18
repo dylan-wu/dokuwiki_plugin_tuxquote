@@ -21,7 +21,7 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
     function getInfo() {
         return array('author' => 'Craig Douglas',
                      'email'  => 'contact22@eldougo.net',
-                     'date'   => '2014-09-15',
+                     'date'   => '2014-09-18',
                      'name'   => 'Tuxquote Plugin',
                      'desc'   => 'Show a random image and quote',
                      'url'    => 'https://github.com/eldougo/dokuwiki_plugin_tuxquote');
@@ -74,13 +74,38 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
     }
 
     /**
+     * Build and format HTML output.
+     *
+     * @param   string  $div_width   Div width in pixels or percentage [NN%|NNpx].
+     * @param   string  $div_align       Div float alignment [none|left|right].
+     * @param   string  $title       Div title, optional.
+     */
+    function tuxquote_build_format( $div_width, $div_align, $title = '' ) {
+        if ( empty( $div_width ) ) {
+            $div_width = TUXQUOTE_DEFAULT_WIDTH;
+        }
+        if ( is_numeric( $div_width ) ) {
+            $div_width = trim( $div_width ) . "%";
+        }
+        if ( empty( $div_align ) ) {
+        $div_align = TUXQUOTE_DEFAULT_ALIGN;
+        }
+        if ( ! empty( $title ) ) {
+             $title_line = "  <p style='text-align: center; font-weight: 900'>" . $title . "</p>\n";
+        } else {
+            $title_line = '';
+        }
+        return  "\n<div style='float: " . $div_align . "; width: " . $div_width . "; '>\n"
+                .$title_line
+                ."  <img style='width:100%' src='" . $this->tuxquote_choose_image()  . "'><br />\n"
+                ."  <p style='text-align: center'>" . $this->tuxquote_choose_quote() . "</p>\n"
+                ."</div>\n";
+     }
+
+    /**
      * Return HTML encoded random image and quote.
      */
     function tuxquote_main() {
-        return  "\n<div style='float: right; width:256px; '>\n"
-                ."  <img src='" . $this->tuxquote_choose_image() . "'><br />\n"
-                ."  <p style='text-align: center'>" . $this->tuxquote_choose_quote() . "</p>\n"
-                ."</div>\n";
+        return  $this->tuxquote_build_format( $this->getConf('tuxquote_width'), $this->getConf('tuxquote_align'), $this->getConf('tuxquote_title') );
     }
-}
-
+} // class syntax_plugin_tuxquote
