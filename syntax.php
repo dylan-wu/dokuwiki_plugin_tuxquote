@@ -38,11 +38,11 @@ class syntax_plugin_tuxquote extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('\[TUXQUOTE\]',$mode,'plugin_tuxquote');
     }
 
-    function handle($match, $state, $pos, &$handler) {
+    function handle($match, $state, $pos, Doku_Handler $handler) {
         return array($match, $state, $pos);
     }
 
-    function render($mode, &$renderer, $data) {
+    function render($mode, Doku_Renderer $renderer, $data) {
         if($mode == 'xhtml'){
             $renderer->doc .= $this->tuxquote_main();
             return true;
